@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raghad Alharbi | AI Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(34,211,238,0.2); }
+  50% { box-shadow: 0 0 35px rgba(34,211,238,0.5); }
+  100% { box-shadow: 0 0 10px rgba(34,211,238,0.2); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+.glow-animation {
+  animation: pulseGlow 3s infinite;
+}
+
+.fade-up {
+  animation: fadeUp 1s ease forwards;
+}
+
+body {
+  background: #020617;
+}
+.glow {
+  box-shadow: 0 0 25px rgba(34,211,238,0.35);
+}
+.floating-icon {
+position: absolute;
+font-size: 42px;
+opacity: 0.12;
+filter: blur(0.2px);
+transition: transform 0.2s linear;
+}
+
+
+
+to {
+transform: translateY(-10vh);
+}
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(80px);
+transition: all 1s ease;
+}
+
+.reveal.active {
+opacity: 1;
+transform: translateY(0px);
+}
+
+.parallax {
+transform-style: preserve-3d;
+}
+
+.glass {
+backdrop-filter: blur(18px);
+background: rgba(255,255,255,0.05);
+}
+
+</style>
+</head>
+<body class="text-white min-h-screen overflow-x-hidden scroll-smooth bg-black">
+
+<script>
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  document.querySelectorAll('.floating-icon').forEach((icon, index) => {
+    const speed = (index + 1) * 0.08;
+    icon.style.transform = `translateY(${scrollY * speed}px) rotate(${scrollY * 0.03}deg)`;
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('active');
+    }
+  })
+})
+</script>
+
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,180,255,0.15),transparent_40%)]"></div>
+
+
+<div class="floating-icon top-[500px] right-20">✦</div>
+
+<div class="floating-icon top-[1400px] right-32">⬡</div>
+<div class="floating-icon top-[1900px] left-20">✧</div>
+
+<section class="relative px-8 md:px-20 py-20 border-b border-white/10 fade-up parallax reveal">
+  <nav class="flex justify-between items-center mb-24">
+    <div class="flex items-center gap-4 group">
+      <div class="w-14 h-14 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-2xl text-cyan-300 group-hover:rotate-12 transition-all duration-500">
+        ✦
+      </div>
+
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white">
+          Raghad Alharbi
+        </h1>
+        <p class="text-cyan-300 text-sm md:text-base tracking-[0.3em] uppercase mt-1">
+          AI Engineer Portfolio
+        </p>
+      </div>
+    </div>
+
+    <div class="flex gap-4">
+      <a href="https://github.com/Raghadalsleme" target="_blank"
+      class="px-4 py-2 rounded-xl border border-cyan-400/30 hover:bg-cyan-400 hover:text-black transition-all">
+      GitHub
+      </a>
+
+      <a href="https://www.linkedin.com/in/raghad-alsleme-29ab97289" target="_blank"
+      class="px-4 py-2 rounded-xl border border-cyan-400/30 hover:bg-cyan-400 hover:text-black transition-all">
+      LinkedIn
+      </a>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl">
+    <div class="inline-block px-4 py-2 rounded-full border border-cyan-400/30 text-cyan-300 bg-cyan-400/10 mb-6">
+      Machine Learning Engineer • AI Developer • Computer Vision Enthusiast
+    </div>
+
+    <h2 class="text-6xl md:text-8xl font-black leading-tight mb-8 tracking-tight">
+      Raghad
+      <span class="text-cyan-300 drop-shadow-[0_0_25px_rgba(34,211,238,0.9)] animate-pulse"> Alharbi</span>
+      <br>
+      <span class="text-4xl md:text-6xl text-zinc-300 font-semibold">
+        AI Engineer & ML Developer
+      </span>
+    </h2>
+
+    <p class="text-zinc-400 text-xl max-w-3xl leading-9 backdrop-blur-xl fade-up">
+      Building intelligent AI systems powered by Deep Learning,
+      Computer Vision, NLP, Reinforcement Learning, and AI Chatbot Development.
+      Passionate about futuristic technologies, smart automation, and real-world AI innovation.
+    </p>
+
+    <div class="flex gap-5 mt-10">
+      <a href="https://github.com/Raghadalsleme" target="_blank"
+      class="px-7 py-4 bg-cyan-400 text-black rounded-2xl font-bold glow hover:scale-105 transition-all">
+      View Projects
+      </a>
+
+      <a href="https://www.linkedin.com/in/raghad-alsleme-29ab97289" target="_blank"
+      class="px-7 py-4 border border-white/20 rounded-2xl hover:border-cyan-400 hover:text-cyan-300 transition-all">
+      Contact Me
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="px-8 md:px-20 py-28 reveal">
+  <div class="flex items-center gap-4 mb-12">
+    <div class="w-14 h-[2px] bg-cyan-300"></div>
+    <h3 class="text-4xl font-bold">Technical Skills</h3>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-5 fade-up">
+    <div class="p-5 rounded-2xl glass border border-cyan-400/10 hover:border-cyan-300/50 text-center hover:scale-110 transition-all duration-300 hover:border-cyan-400 float-animation">Python</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center hover:scale-110 transition-all duration-300 hover:border-cyan-400">TensorFlow</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">PyTorch</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">OpenCV</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">Scikit-learn</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">NLP</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">Computer Vision</div>
+    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">Streamlit</div>
+  </div>
+</section>
+
+<section class="px-8 md:px-20 py-28 border-t border-white/10 reveal">
+  <div class="flex items-center gap-4 mb-14">
+    <div class="w-14 h-[2px] bg-cyan-300"></div>
+    <h3 class="text-5xl font-black tracking-wide">Featured Projects</h3>
+  </div>
+
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 fade-up perspective-[1000px]">
+
+    <div class="p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-4 hover:scale-[1.03] duration-500">
+      <h4 class="text-2xl font-bold mb-4 text-cyan-200">NoorBot</h4>
+      <p class="text-zinc-400 mb-6">AI-powered Islamic chatbot with Arabic intelligent interactions, NLP integration, and smart assistant capabilities.</p>
+      <a href="https://github.com/Raghadalsleme/NoorBot" target="_blank" class="text-cyan-300">View Project →</a>
+    </div>
+
+    <div class="p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-2">
+      <h4 class="text-2xl font-bold mb-4 text-cyan-200">Amazon Sentiment Analysis</h4>
+      <p class="text-zinc-400 mb-6">Interactive NLP dashboard analyzing customer reviews, sentiment trends, and data insights using ML models.</p>
+      <a href="https://github.com/Raghadalsleme/amazon-sentiment-analysis.streamlit.ap" target="_blank" class="text-cyan-300">View Project →</a>
+    </div>
+
+    <div class="p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-2">
+      <h4 class="text-2xl font-bold mb-4 text-cyan-200">RL Challenge</h4>
+      <p class="text-zinc-400 mb-6">Reinforcement learning experiments using intelligent agents, reward systems, and AI training environments.</p>
+      <a href="https://github.com/Raghadalsleme/RL-Challenge" target="_blank" class="text-cyan-300">View Project →</a>
+    </div>
+
+    <div class="p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-2">
+      <h4 class="text-2xl font-bold mb-4 text-cyan-200">Wethaq</h4>
+      <p class="text-zinc-400 mb-6">Financial feasibility and startup planning tool developed to support entrepreneurs and business decision-making.</p>
+      <a href="https://github.com/Raghadalsleme/Wethaq" target="_blank" class="text-cyan-300">View Project →</a>
+    </div>
+
+    <div class="p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-2">
+      <h4 class="text-2xl font-bold mb-4 text-cyan-200">SCAI</h4>
+      <p class="text-zinc-400 mb-6">AI-focused experimentation project exploring intelligent systems, automation, and advanced ML workflows.</p>
+      <a href="https://github.com/Raghadalsleme/Scai" target="_blank" class="text-cyan-300">View Project →</a>
+    </div>
+
+    <div class="p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-2">
+      <h4 class="text-2xl font-bold mb-4 text-cyan-200">Book Success Prediction</h4>
+      <p class="text-zinc-400 mb-6">Predictive AI web application estimating book success probability using machine learning algorithms.</p>
+      <a href="https://github.com/Raghadalsleme/bookpredc" target="_blank" class="text-cyan-300">View Project →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="px-8 md:px-20 py-24 border-t border-white/10 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_60%)]"></div>
+
+  <div class="relative flex items-center gap-4 mb-16">
+    <div class="w-20 h-[2px] bg-cyan-300"></div>
+    <h3 class="text-5xl font-black tracking-wide">Experience & Leadership</h3>
+  </div>
+
+  <div class="relative space-y-10 max-w-6xl timeline-container">
+
+    <div class="group relative p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(34,211,238,0.25)] overflow-hidden">
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_40%)]"></div>
+
+      <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Project 1932</h4>
+          <p class="text-cyan-400 text-sm mt-1">Little Sibling Program Participant</p>
+        </div>
+
+        <span class="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-sm w-fit glow-animation">
+          Mentorship & Growth
+        </span>
+      </div>
+
+      <p class="relative text-zinc-400 leading-8 text-lg">
+        Selected as part of Project 1932 mentorship initiative focused on professional growth,
+        leadership development, collaboration, and building future-ready technical and personal skills.
+      </p>
+    </div>
+
+    <div class="group relative p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:scale-[1.04] hover:rotate-[0.5deg] hover:shadow-[0_0_45px_rgba(34,211,238,0.25)] overflow-hidden">
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_40%)]"></div>
+
+      <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">KAUST Academy</h4>
+          <p class="text-cyan-400 text-sm mt-1">AI Trainee</p>
+        </div>
+
+        <span class="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-sm w-fit glow-animation">
+          AI Training
+        </span>
+      </div>
+
+      <p class="relative text-zinc-400 leading-8 text-lg">
+        Completed intensive AI-focused training covering real-world problem solving,
+        machine learning applications, innovation methodologies, and collaborative technical learning.
+      </p>
+    </div>
+
+    <div class="group relative p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(34,211,238,0.25)] overflow-hidden">
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_40%)]"></div>
+
+      <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Digital Intelligence Horizons</h4>
+          <p class="text-cyan-400 text-sm mt-1">AI Team Member • Hail Municipality</p>
+        </div>
+
+        <span class="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-sm w-fit glow-animation">
+          Smart City AI
+        </span>
+      </div>
+
+      <p class="relative text-zinc-400 leading-8 text-lg">
+        Contributing to AI initiatives and innovative smart-city solutions for Hail Municipality,
+        working on intelligent technologies and future-focused digital transformation projects.
+      </p>
+    </div>
+
+    <div class="group relative p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(34,211,238,0.25)] overflow-hidden">
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_40%)]"></div>
+
+      <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Qimmah Competition Team</h4>
+          <p class="text-cyan-400 text-sm mt-1">Competitive AI Team Member</p>
+        </div>
+
+        <span class="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-sm w-fit glow-animation">
+          Competitive AI
+        </span>
+      </div>
+
+      <p class="relative text-zinc-400 leading-8 text-lg">
+        Participating in high-level AI and problem-solving competitions,
+        applying analytical thinking, technical collaboration, and advanced AI concepts in competitive environments.
+      </p>
+    </div>
+
+    <div class="group relative p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(34,211,238,0.25)] overflow-hidden">
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_40%)]"></div>
+
+      <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Oracle Student Ambassador</h4>
+          <p class="text-cyan-400 text-sm mt-1">Oracle</p>
+        </div>
+
+        <span class="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-sm w-fit glow-animation">
+          Community Leadership
+        </span>
+      </div>
+
+      <p class="relative text-zinc-400 leading-8 text-lg">
+        Representing Oracle within technical communities, organizing knowledge-sharing events,
+        supporting AI and tech initiatives, and contributing to innovation-focused community activities.
+      </p>
+    </div>
+
+    
+    <div class="group p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">AI Club</h4>
+          <p class="text-cyan-400 text-sm mt-1">Leadership Team • Projects Team</p>
+        </div>
+      </div>
+      <p class="text-zinc-400 leading-8 text-lg">
+        Leading AI-focused initiatives and collaborating on technical projects and innovation activities.
+      </p>
+    </div>
+
+    <div class="group p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Cybersecurity Club</h4>
+          <p class="text-cyan-400 text-sm mt-1">Management Team • Gaming Team</p>
+        </div>
+      </div>
+      <p class="text-zinc-400 leading-8 text-lg">
+        Organizing cybersecurity workshops, awareness campaigns, and gaming activities.
+      </p>
+    </div>
+
+    <div class="group p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Design & Directing Club</h4>
+          <p class="text-cyan-400 text-sm mt-1">Content Writing Team</p>
+        </div>
+      </div>
+      <p class="text-zinc-400 leading-8 text-lg">
+        Produced technical and creative written content for media and design-related projects.
+      </p>
+    </div>
+
+    <div class="group p-8 rounded-[30px] bg-gradient-to-b from-cyan-500/10 to-white/5 border border-cyan-400/20 hover:border-cyan-300/50 transition-all hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+        <div>
+          <h4 class="text-3xl font-bold text-cyan-200">Hackathon Lead Organizer</h4>
+          <p class="text-cyan-400 text-sm mt-1">University of Hail</p>
+        </div>
+
+        <span class="px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-300 text-sm w-fit">
+          Technical Organization
+        </span>
+      </div>
+
+      <p class="text-zinc-400 leading-8 text-lg">
+        Led the organization of a university-wide AI hackathon, developed technical notebooks,
+        designed evaluation criteria, and supported participant coordination.
+      </p>
+    </div>
+
+</section>
+
+<footer class="px-8 md:px-20 py-16 border-t border-white/10 text-center text-zinc-500 fade-up reveal">
+  © 2026 Raghad Alharbi • AI Portfolio
+</footer>
+
+</body>
+</html>
