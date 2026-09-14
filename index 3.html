@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raghad Alharbi — AI &amp; Machine Learning Engineer</title>
+<meta name="description" content="Portfolio of Raghad Alharbi: machine learning projects in computer vision, NLP, reinforcement learning and Arabic chatbots.">
+<meta name="theme-color" content="#F2EDE6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --paper:#F2EDE6;
+  --surface:#FBF8F3;
+  --ink:#241F26;
+  --muted:#6F6359;
+  --rule:#E0D6CA;
+  --accent:#6A4CA8;
+  --accent-soft:rgba(106,76,168,.09);
+  --shadow:0 1px 2px rgba(60,45,35,.06);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --pad:clamp(1.25rem,5vw,4.5rem);
+}
+[data-theme="dark"]{
+  --paper:#1B1720;
+  --surface:#241F2B;
+  --ink:#F1EAE2;
+  --muted:#A79A92;
+  --rule:#352E3E;
+  --accent:#BFA2F2;
+  --accent-soft:rgba(191,162,242,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:5rem;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  transition:background-color .25s ease,color .25s ease;
+}
+a{color:inherit;}
+button{font:inherit;color:inherit;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:.6rem 1rem;z-index:20;}
+.skip:focus{left:1rem;top:1rem;}
+
+.wrap{max-width:70rem;margin-inline:auto;padding-inline:var(--pad);}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:12;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.progress{
+  position:absolute;left:0;bottom:-1px;height:2px;width:0;
+  background:var(--accent);
+  transition:width .1s linear;
+}
+.topbar .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding-block:.85rem;
+}
+.mark{font-family:var(--serif);font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap;}
+.bar-right{display:flex;align-items:center;gap:.5rem;}
+.topbar nav{display:flex;gap:1.25rem;}
+.topbar nav a{
+  font-size:.9375rem;color:var(--muted);text-decoration:none;
+  padding-bottom:2px;border-bottom:1px solid transparent;
+  transition:color .15s ease,border-color .15s ease;
+}
+.topbar nav a:hover{color:var(--ink);}
+.topbar nav a[aria-current="true"]{color:var(--ink);border-bottom-color:var(--accent);}
+
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.4rem;height:2.4rem;
+  border:1px solid var(--rule);border-radius:999px;
+  background:transparent;cursor:pointer;
+  transition:border-color .15s ease,background .15s ease;
+}
+.icon-btn:hover{border-color:var(--accent);background:var(--accent-soft);}
+.icon-btn svg{width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;}
+[data-theme="dark"] .sun{display:none;}
+[data-theme="light"] .moon{display:none;}
+.menu-btn{display:none;}
+
+@media (max-width:47.99rem){
+  .menu-btn{display:inline-flex;}
+  .topbar nav{
+    position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;gap:0;
+    background:var(--paper);
+    border-bottom:1px solid var(--rule);
+    padding:.5rem var(--pad) 1rem;
+    display:none;
+  }
+  .topbar nav.open{display:flex;}
+  .topbar nav a{padding:.65rem 0;border-bottom:1px solid var(--rule);}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(3.5rem,10vw,6.5rem) clamp(2.5rem,6vw,4.5rem);}
+.status{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.875rem;color:var(--muted);
+  border:1px solid var(--rule);border-radius:999px;
+  padding:.3rem .9rem;margin-bottom:1.75rem;
+}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);}
+.hero h1{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.75rem,11vw,6.5rem);
+  line-height:.98;letter-spacing:-.025em;margin:0 0 1.5rem;
+}
+.lede{font-size:clamp(1.125rem,2.2vw,1.35rem);line-height:1.55;max-width:34ch;margin:0 0 1rem;}
+.sub{color:var(--muted);margin:0 0 2rem;max-width:48ch;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1.35rem;border:1px solid var(--ink);border-radius:8px;
+  font-size:.9375rem;font-weight:500;text-decoration:none;cursor:pointer;
+  background:transparent;
+  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .15s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-solid{background:var(--ink);color:var(--paper);}
+.btn-solid:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ---------- sections ---------- */
+.section{border-top:1px solid var(--rule);padding-block:clamp(3rem,7vw,5rem);}
+.section h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.2;margin:0 0 .5rem;}
+.note{color:var(--muted);font-size:.9375rem;margin:0 0 1.75rem;max-width:36ch;}
+@media (min-width:62rem){
+  .section .wrap{display:grid;grid-template-columns:13rem 1fr;gap:3.5rem;align-items:start;}
+  .section .head{position:sticky;top:6rem;}
+  .note{margin-bottom:0;}
+}
+
+/* ---------- filters ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem;}
+.chip{
+  border:1px solid var(--rule);border-radius:999px;
+  padding:.35rem .9rem;font-size:.875rem;color:var(--muted);
+  background:transparent;cursor:pointer;
+  transition:all .15s ease;
+}
+.chip:hover{color:var(--ink);border-color:var(--ink);}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+
+/* ---------- projects ---------- */
+.grid{display:grid;gap:1rem;}
+@media (min-width:40rem){.grid{grid-template-columns:repeat(2,1fr);}}
+.card{
+  display:flex;flex-direction:column;
+  background:var(--surface);
+  border:1px solid var(--rule);border-radius:10px;
+  padding:1.45rem 1.45rem 1.25rem;
+  text-decoration:none;box-shadow:var(--shadow);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,opacity .18s ease;
+}
+.card:hover,.card:focus-visible{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+  box-shadow:0 12px 26px -16px rgba(70,50,40,.5);
+}
+.card h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.25;margin:0 0 .5rem;}
+.card:hover h3{color:var(--accent);}
+.card p{margin:0 0 1rem;color:var(--muted);font-size:.9688rem;}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;padding:0;margin:auto 0 0;}
+.tags li{font-size:.75rem;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:.1rem .6rem;}
+.card.hide{display:none;}
+.empty{color:var(--muted);font-size:.9375rem;}
+
+/* ---------- experience ---------- */
+.roles{list-style:none;margin:0;padding:0;}
+.role-item{border-bottom:1px solid var(--rule);}
+.role-item summary{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:1.1rem 0;cursor:pointer;list-style:none;
+}
+.role-item summary::-webkit-details-marker{display:none;}
+.role-item h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;margin:0;}
+.role-item .role{color:var(--muted);font-size:.9375rem;display:block;margin-top:.15rem;}
+.role-item .plus{color:var(--accent);flex:none;transition:transform .2s ease;font-size:1.1rem;line-height:1;}
+.role-item[open] .plus{transform:rotate(45deg);}
+.role-item p{margin:0 0 1.2rem;color:var(--muted);max-width:60ch;}
+
+.clubs{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:.6rem;}
+.clubs li{display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline;padding-bottom:.6rem;border-bottom:1px solid var(--rule);}
+.clubs strong{font-weight:500;}
+.clubs span{color:var(--muted);font-size:.9375rem;}
+
+/* ---------- skills ---------- */
+.skillset{margin:0;}
+.skillset dt{font-size:.875rem;color:var(--muted);margin-bottom:.5rem;}
+.skillset dd{margin:0 0 1.5rem;display:flex;flex-wrap:wrap;gap:.5rem;}
+.skillset dd:last-child{margin-bottom:0;}
+.skillset dd span{
+  border:1px solid var(--rule);border-radius:8px;
+  padding:.3rem .8rem;font-size:.9375rem;
+  transition:border-color .15s ease,color .15s ease;
+}
+.skillset dd span:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ---------- contact ---------- */
+.contact-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem;}
+.copied{font-size:.875rem;color:var(--accent);margin-top:.75rem;height:1.2rem;}
+
+/* ---------- footer + to top ---------- */
+footer{border-top:1px solid var(--rule);padding-block:2rem 3rem;color:var(--muted);font-size:.875rem;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;}
+.totop{
+  position:fixed;right:1.25rem;bottom:1.25rem;z-index:11;
+  background:var(--surface);
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .2s ease,transform .2s ease;
+}
+.totop.show{opacity:1;pointer-events:auto;transform:none;}
+
+/* ---------- reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.js .reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .js .reveal{opacity:1;transform:none;transition:none;}
+  .btn:hover,.card:hover{transform:none;}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="progress" id="progress"></div>
+  <div class="wrap">
+    <a class="mark" href="#top">Raghad Alharbi</a>
+    <div class="bar-right">
+      <nav id="nav" aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch to dark theme">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4a8.3 8.3 0 1 0 10.5 10.5z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="status"><span class="dot"></span>Open to machine learning internships</span>
+      <h1>AI &amp; machine<br>learning engineer</h1>
+      <p class="lede">I build machine learning systems for computer vision, natural language, and reinforcement learning.</p>
+      <p class="sub">Recent work includes an Arabic chatbot, a sentiment analysis dashboard, and smart city AI for Hail Municipality.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#projects">See the projects</a>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/raghad-alsleme-29ab97289" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-line" href="https://github.com/Raghadalsleme" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2 id="projects-title">Projects</h2>
+        <p class="note">Six builds, each with source code on GitHub. Filter by area.</p>
+      </div>
+
+      <div>
+        <div class="filters" id="filters" role="group" aria-label="Filter projects by area">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-filter="nlp" aria-pressed="false">NLP</button>
+          <button class="chip" type="button" data-filter="rl" aria-pressed="false">Reinforcement learning</button>
+          <button class="chip" type="button" data-filter="app" aria-pressed="false">Web apps</button>
+          <button class="chip" type="button" data-filter="ml" aria-pressed="false">Applied ML</button>
+        </div>
+
+        <div class="grid" id="project-grid">
+
+          <a class="card reveal" data-areas="nlp app" href="https://github.com/Raghadalsleme/NoorBot" target="_blank" rel="noopener">
+            <h3>NoorBot</h3>
+            <p>An Islamic chatbot that answers in Arabic, built on natural language processing.</p>
+            <ul class="tags"><li>NLP</li><li>Arabic</li><li>Chatbot</li></ul>
+          </a>
+
+          <a class="card reveal" data-areas="nlp app ml" href="https://github.com/Raghadalsleme/amazon-sentiment-analysis.streamlit.ap" target="_blank" rel="noopener">
+            <h3>Amazon Sentiment Analysis</h3>
+            <p>A dashboard that reads customer reviews and shows how sentiment shifts over time.</p>
+            <ul class="tags"><li>NLP</li><li>Streamlit</li></ul>
+          </a>
+
+          <a class="card reveal" data-areas="rl ml" href="https://github.com/Raghadalsleme/RL-Challenge" target="_blank" rel="noopener">
+            <h3>RL Challenge</h3>
+            <p>Agents trained in simulated environments, with experiments on reward design and training stability.</p>
+            <ul class="tags"><li>Reinforcement learning</li></ul>
+          </a>
+
+          <a class="card reveal" data-areas="app" href="https://github.com/Raghadalsleme/Wethaq" target="_blank" rel="noopener">
+            <h3>Wethaq</h3>
+            <p>A planning tool that helps founders test whether a business idea adds up financially.</p>
+            <ul class="tags"><li>Finance</li><li>Planning tool</li></ul>
+          </a>
+
+          <a class="card reveal" data-areas="ml" href="https://github.com/Raghadalsleme/Scai" target="_blank" rel="noopener">
+            <h3>SCAI</h3>
+            <p>An experimentation project on intelligent systems and automated machine learning workflows.</p>
+            <ul class="tags"><li>Applied ML</li><li>Automation</li></ul>
+          </a>
+
+          <a class="card reveal" data-areas="ml app" href="https://github.com/Raghadalsleme/bookpredc" target="_blank" rel="noopener">
+            <h3>Book Success Prediction</h3>
+            <p>A web app that estimates how likely a book is to do well, from its features and past sales data.</p>
+            <ul class="tags"><li>Machine learning</li><li>Web app</li></ul>
+          </a>
+
+        </div>
+        <p class="empty" id="empty" hidden>No projects in this area yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2 id="experience-title">Experience</h2>
+        <p class="note">Training programmes, technical teams, and community work. Open a row for details.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="roles">
+
+          <details class="role-item">
+            <summary>
+              <span><h3>KAUST Academy</h3><span class="role">AI Trainee</span></span>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>Intensive AI training covering applied machine learning and real problem solving with a team.</p>
+          </details>
+
+          <details class="role-item">
+            <summary>
+              <span><h3>Hail Municipality</h3><span class="role">AI Team Member, Digital Intelligence Horizons</span></span>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>Working on smart city projects and digital transformation initiatives for the municipality.</p>
+          </details>
+
+          <details class="role-item">
+            <summary>
+              <span><h3>Oracle</h3><span class="role">Student Ambassador</span></span>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>Representing Oracle on campus: running knowledge sharing events and supporting tech initiatives.</p>
+          </details>
+
+          <details class="role-item">
+            <summary>
+              <span><h3>University of Hail</h3><span class="role">Lead organiser, AI hackathon</span></span>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>Ran a university wide AI hackathon: wrote the technical notebooks, set the judging criteria, and coordinated participants.</p>
+          </details>
+
+          <details class="role-item">
+            <summary>
+              <span><h3>Qimmah Competition Team</h3><span class="role">Team member</span></span>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>Competing in AI and problem solving contests under time pressure.</p>
+          </details>
+
+          <details class="role-item">
+            <summary>
+              <span><h3>Project 1932</h3><span class="role">Little Sibling Programme</span></span>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>A mentorship programme focused on leadership and professional development.</p>
+          </details>
+
+        </div>
+
+        <ul class="clubs">
+          <li><strong>AI Club</strong> <span>Leadership team and projects team</span></li>
+          <li><strong>Cybersecurity Club</strong> <span>Management team and gaming team, workshops and awareness campaigns</span></li>
+          <li><strong>Design &amp; Directing Club</strong> <span>Content writing team</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2 id="skills-title">Skills</h2>
+      </div>
+      <dl class="skillset reveal">
+        <dt>Languages and frameworks</dt>
+        <dd><span>Python</span><span>TensorFlow</span><span>PyTorch</span><span>scikit-learn</span><span>OpenCV</span><span>Streamlit</span></dd>
+        <dt>Focus areas</dt>
+        <dd><span>Computer vision</span><span>Natural language processing</span><span>Reinforcement learning</span><span>Chatbot development</span></dd>
+        <dt>Languages</dt>
+        <dd><span>Arabic (native)</span><span>English</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2 id="contact-title">Contact</h2>
+      </div>
+      <div class="reveal">
+        <p class="lede">Open to internships and junior roles in machine learning.</p>
+        <div class="contact-links">
+          <a class="btn btn-solid" href="https://www.linkedin.com/in/raghad-alsleme-29ab97289" target="_blank" rel="noopener">Message on LinkedIn</a>
+          <a class="btn btn-line" href="https://github.com/Raghadalsleme" target="_blank" rel="noopener">GitHub profile</a>
+          <button class="btn btn-line" id="copy" type="button">Copy LinkedIn link</button>
+        </div>
+        <p class="copied" id="copied" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Raghad Alharbi, 2026</span>
+    <span><a href="https://github.com/Raghadalsleme" target="_blank" rel="noopener">github.com/Raghadalsleme</a></span>
+  </div>
+</footer>
+
+<button class="icon-btn totop" id="totop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script>
+(function(){
+  var root=document.documentElement;
+
+  /* theme */
+  var themeBtn=document.getElementById('theme');
+  var meta=document.querySelector('meta[name="theme-color"]');
+  function setTheme(t){
+    root.setAttribute('data-theme',t);
+    themeBtn.setAttribute('aria-label', t==='dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    if(meta) meta.setAttribute('content', t==='dark' ? '#1B1720' : '#F2EDE6');
+  }
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(prefersDark ? 'dark' : 'light');
+  themeBtn.addEventListener('click',function(){
+    setTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+  });
+
+  /* mobile menu */
+  var menuBtn=document.getElementById('menu'), nav=document.getElementById('nav');
+  menuBtn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
+  });
+
+  /* scroll progress + back to top */
+  var progress=document.getElementById('progress'), totop=document.getElementById('totop'), ticking=false;
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var p=h>0 ? (window.scrollY/h)*100 : 0;
+    progress.style.width=p+'%';
+    totop.classList.toggle('show', window.scrollY>600);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){ window.requestAnimationFrame(onScroll); ticking=true; }
+  },{passive:true});
+  onScroll();
+  totop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  /* reveal on scroll */
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{rootMargin:'0px 0px -12% 0px',threshold:.1});
+    reveals.forEach(function(el,i){ el.style.transitionDelay=(i%6)*60+'ms'; io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* active nav link */
+  var links=nav.querySelectorAll('a');
+  var sections=[].map.call(links,function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if('IntersectionObserver' in window && sections.length){
+    var spy=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(a){
+            a.setAttribute('aria-current', a.getAttribute('href')==='#'+en.target.id ? 'true':'false');
+          });
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* project filters */
+  var chips=document.querySelectorAll('.chip');
+  var cards=document.querySelectorAll('#project-grid .card');
+  var empty=document.getElementById('empty');
+  chips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      var f=chip.getAttribute('data-filter'), shown=0;
+      chips.forEach(function(c){ c.setAttribute('aria-pressed', c===chip ? 'true':'false'); });
+      cards.forEach(function(card){
+        var match = f==='all' || card.getAttribute('data-areas').split(' ').indexOf(f)>-1;
+        card.classList.toggle('hide', !match);
+        if(match) shown++;
+      });
+      empty.hidden = shown>0;
+    });
+  });
+
+  /* copy link */
+  var copyBtn=document.getElementById('copy'), note=document.getElementById('copied');
+  var url='https://www.linkedin.com/in/raghad-alsleme-29ab97289';
+  copyBtn.addEventListener('click',function(){
+    function done(ok){ note.textContent = ok ? 'Link copied.' : 'Copy failed. The link is: '+url; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){done(true);},function(){done(false);});
+    } else {
+      var t=document.createElement('textarea');
+      t.value=url; document.body.appendChild(t); t.select();
+      try{ document.execCommand('copy'); done(true); }catch(e){ done(false); }
+      document.body.removeChild(t);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
